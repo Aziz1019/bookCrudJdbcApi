@@ -20,9 +20,9 @@ public class BookDao {
         return jdbcTemplate.queryForList("select * from bbook");
     }
 
-    public int update(int id, Book book){
-        String query = "update bbook set author = ?, book_name = ? where id = " + id;
-        return jdbcTemplate.update(query, book.getAuthor(), book.getBook_name());
+    public int update(Book book){
+        String query = "update bbook set author = ?, book_name = ? where id = ?";
+        return jdbcTemplate.update(query, book.getAuthor(), book.getBook_name(), book.getId());
     }
 
     public int delete(int id){
